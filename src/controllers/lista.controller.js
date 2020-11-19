@@ -21,7 +21,6 @@ exports.create = function(req, res) {
   if(req.body.constructor === Object && Object.keys(req.body).length === 0){
     return res.status(400).send({ error:true, message: 'Please provide all required field' });
   }else{
-    console.log("va a hacer la petición");
     Lista.create(new_lista, function(err, data) {
       if (err) return res.send(err);
       return res.json({error:false, message:"Lista added successfully!", data: data});

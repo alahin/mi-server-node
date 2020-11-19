@@ -3,8 +3,8 @@ var dbConn = require('../../config/db.config');
 //Employee object create
 var Lista = function(lista){
   this.name = lista.name;
-  this.created_at = new Date();
-  this.updated_at = new Date();
+  this.created_at = Date.now();
+  this.updated_at = Date.now();
 };
 
 Lista.findAll = function (result) {
