@@ -1,8 +1,8 @@
 var dbConn = require('../../config/db.config');
 
 //Employee object create
-var Lista = function(lista){
-  this.name = lista.name;
+var Lista = function(data){
+  this.name = data.name;
   this.created_at = Date.now();
   this.updated_at = Date.now();
 };
@@ -31,22 +31,20 @@ Lista.findById = function (id, result) {
   });
 };
 
-Lista.create = function (newLista, result) {
-  dbConn.query("insert into listas set ?", newLista, function (err, res) {
+Lista.create = function (data, result) {
+  dbConn.query("insert into listas set ?", data, function (err, res) {
     if(err) {
-      console.log(err.message);
       result(err, null);
     }
     else{
-      console.log(res.insertId);
       result(null, res.insertId);
     }
   });
 };
 
-Lista.update = function(id, lista, result){
+Lista.update = function(id, data, result){
   dbConn.query("update listas SET name = ? where id = ?",
-    [lista.name, id], function (err, res) {
+    [data.name, id], function (err, res) {
     if(err) {
       console.log("error: ", err);
       result(null, err);

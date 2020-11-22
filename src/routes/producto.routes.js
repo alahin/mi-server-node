@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const controller = require('../controllers/lista.controller');
+const controller = require('../controllers/producto.controller');
 
 // Retrieve all
-router.get('/', controller.findAll);
+router.get('/:id_lista', controller.findAll);
 
 // Retrieve a single with id
 router.get('/:id', controller.findById);

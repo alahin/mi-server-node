@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const listaRoutes = require('./src/routes/lista.routes');
+const productoRoutes = require('./src/routes/producto.routes');
 const app = express();
 
 // Setup server port
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 
 // using as middleware
 app.use('/api/listas', listaRoutes);
+app.use('/api/productos', productoRoutes);
 
 // listen for requests
 app.listen(port, () => {
